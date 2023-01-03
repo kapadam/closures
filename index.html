@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Closures</h1>
+    <h1 style="text-align: center;">JS-Handson-16</h1>
+    <h3> 
+        <pre>
+1. function counter(){
+    var counter = 0;
+function IncreaseCounter() {
+    return counter += 1;
+};
+    return IncreaseCounter;
+}
+var counter = counter();
+alert(counter());
+alert(counter());
+alert(counter());
+alert(counter());"
+        </pre>
+    </h3>
+    <h4>Output:</h4>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <h3>
+        <pre>
+2. let count = 0;
+(
+ function () {
+  if (count === 0) {
+  let count = 1;
+ console.log(count);
+ }
+ console.log(count);
+})();
+        </pre>
+    </h3>
+    <h4>Output:</h4>
+    <p>1</p>
+    <p>0</p>
+    <h3>
+        <pre>
+3. for (var i = 0; i &lt; 3; i++) {
+    setTimeout(function log() {
+      console.log(i); 
+    }, 1000);
+   }
+        </pre>
+    </h3>
+    <h4>Output:</h4>
+    <p>3</p>
+    <p>3</p>
+    <p>3</p>
+    <h3>4. Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.    </h3>
+    <h4>Source Code:</h4>
+    <pre>
+    function length(l){
+      function breadth(b){
+        let area=l*b;
+        return area;
+      }
+      console.log(breadth(10));
+    }
+    length(20);
+    </pre>
+    <h3>5. Take a variable in outer function and create an inner function to increase the counter every time it is called</h3>
+    <h3>Source Code:</h3>
+    <pre>
+    function outer() {
+        var count = 0;
+        function inner() {
+          return count+=1;
+        }
+        return inner;
+    }
+    var outer = outer();
+    console.log(outer());
+    console.log(outer());
+    console.log(outer());
+    </pre>
+    <h3>
+        <pre>
+6. var a = 12;
+    (function () {
+    alert(a);
+    })();
+        </pre>
+    </h3>
+    <h4>Output:</h4>
+    <p>12</p>
+    <p>gives 12 as an output in alert box.</p>
+    <h3>
+        <pre>
+7. var a = 10;
+   var x = (function () {
+    var a = 12;
+    return function () {
+      alert(a);
+    };
+   })();
+   x();
+        </pre>
+    </h3>
+    <h4>Output:</h4>
+    <p>12</p>
+    <p>gives 12 as an output in alert box.</p>
+    <h3>
+        <pre>
+8. var globalVar = "xyz";
+   (function outerFunc(outerArg) {
+      var outerVar = 'a';
+        (function innerFunc(innerArg) {
+          var innerVar = 'b';
+            console.log(
+                " outerArg = " + outerArg + "\n" +
+                "innerArg = " + innerArg + "\n" +
+                "outerVar = " + outerVar + "\n" +
+                "innerVar = " + innerVar + "\n" +
+                "globalVar = " + globalVar);  
+        })(456);
+    })(123);
+        </pre>
+    </h3>
+    <h4>Output:</h4>
+    <pre>
+    outerArg = 123
+    innerArg = 456
+    outerVar = a
+    innerVar = b
+    globalVar = xyz
+    </pre>
+
+</body>
+</html>
